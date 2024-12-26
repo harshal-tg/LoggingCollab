@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Console Appender (optional for debugging in the console) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </Console>
+        
+        <!-- File Appenders for each User Type -->
+        <File name="UserType1File" fileName="logs/UserType1.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+        <!-- <File name="UserType2File" fileName="logs/UserType2.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+        <File name="UserType3File" fileName="logs/UserType3.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+        <File name="UserType4File" fileName="logs/UserType4.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File>
+        <File name="CommonLogFile" fileName="logs/Common.log">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+        </File> -->
+    </Appenders>
+
+    <Loggers>
+        <!-- Individual loggers for each user type -->
+        <Logger name="GlobalLogger" level="info" additivity="false">
+            <!-- <AppenderRef ref="UserType1File"/> -->
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <!-- <Logger name="UserType2Logger" level="info" additivity="false">
+            <AppenderRef ref="UserType2File"/>
+        </Logger>
+        <Logger name="UserType3Logger" level="info" additivity="false">
+            <AppenderRef ref="UserType3File"/>
+        </Logger>
+        <Logger name="UserType4Logger" level="info" additivity="false">
+            <AppenderRef ref="UserType4File"/>
+        </Logger>
+
+        Common logger for shared logs
+        <Logger name="CommonLogger" level="info" additivity="false">
+            <AppenderRef ref="CommonLogFile"/>
+        </Logger> -->
+
+        <!-- Root logger (optional, for fallback logs) -->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
