@@ -2,37 +2,49 @@ package com.example.loggingdemo.logging.loggers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
-import com.example.loggingdemo.logging.UserInfo;
+import jakarta.servlet.http.HttpServletRequest;
 
 public class ThisLogger {
 
 	private final Logger logger;
-	// @Autowired
-	private UserInfo userInfo;
+	private int userId;
 	private String className;
 
 	public ThisLogger(Class<?> clazz) {
-        this.logger = LogManager.getLogger("GlobalLogger");
+		this.logger = LogManager.getLogger("GlobalLogger");
 		this.className = clazz.getName();
-    }
-
-	@Autowired
-	public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+		// setUserId(getRequest());
 	}
 
+	private void setUserId(HttpServletRequest request) {
+		String user = request.getHeader("userId");
+		this.userId = Integer.parseInt(user);
+	}
+
+	private HttpServletRequest getRequest() {
+        RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
+        if (requestAttributes != null) {
+            return (HttpServletRequest) requestAttributes.resolveReference(RequestAttributes.REFERENCE_REQUEST);
+        }
+        return null;
+    }
+
 	public void infoLogger(String message) {
-		logger.info(message + "[" + this.className +  "] : " + userInfo.getUserId() + " : " + userInfo.getUserName());
+		setUserId(getRequest());
+		logger.info(message + " [[" + this.className +  "]] : " + this.userId);
 	}
 
 	public void warnLogger(String message) {
-		logger.warn(message + "[" + this.className +  "] : " + userInfo.getUserId() + " : " + userInfo.getUserName());
+		setUserId(getRequest());
+		logger.warn(message + " [[" + this.className +  "]] : " + this.userId);
 	}
 
 	public void errorLogger(String message) {
-		logger.error(message + "[" + this.className +  "] : " + userInfo.getUserId() + " : " + userInfo.getUserName());
+		setUserId(getRequest());
+		logger.error(message + " [[" + this.className +  "]] : " + this.userId);
 	}
 
 }

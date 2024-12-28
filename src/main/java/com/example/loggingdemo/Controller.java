@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.loggingdemo.logging.loggers.ThisLogger;
 
+import jakarta.servlet.ServletRequest;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 
