@@ -30,9 +30,10 @@
             <!-- <AppenderRef ref="UserType1File"/> -->
             <AppenderRef ref="Console"/>
         </Logger>
-        <!-- <Logger name="UserType2Logger" level="info" additivity="false">
-            <AppenderRef ref="UserType2File"/>
+        <Logger name="UserType1Logger" level="info" additivity="false">
+            <AppenderRef ref="UserType1File"/>
         </Logger>
+        <!--
         <Logger name="UserType3Logger" level="info" additivity="false">
             <AppenderRef ref="UserType3File"/>
         </Logger>

@@ -30,7 +30,7 @@ public class AuthFilter implements Filter{
         // userInfo.setUserId(123);
         // userInfo.setUserName("Harshal");
 
-        Set<String> validRoles = Set.of("Student", "Faculty");
+        Set<String> validRoles = Set.of("Student", "Faculty", "Admin");
         if(true){
             System.out.println("AuthorizationFilter - role Authorised" + role);
             chain.doFilter(request,response);
