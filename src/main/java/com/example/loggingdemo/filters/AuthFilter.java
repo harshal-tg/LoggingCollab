@@ -32,10 +32,6 @@ public class AuthFilter implements Filter{
 
         // int userId = Integer.parseInt(user);
 
-        
-
-        userInfo.setUserId(123);
-        userInfo.setUserName("Harshal");
 
         Set<String> validRoles = Set.of("Student", "Faculty");
         if(true){

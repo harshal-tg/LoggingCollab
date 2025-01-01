@@ -3,12 +3,12 @@
     <Appenders>
         <!-- Console Appender (optional for debugging in the console) -->
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg [%X{username}]%n"/>
         </Console>
         
         <!-- File Appenders for each User Type -->
         <File name="UserType1File" fileName="logs/UserType1.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg [%X{username}%n]"/>
         </File>
         <!-- <File name="UserType2File" fileName="logs/UserType2.log">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %c{1} - %msg%n"/>
@@ -30,10 +30,10 @@
             <!-- <AppenderRef ref="UserType1File"/> -->
             <AppenderRef ref="Console"/>
         </Logger>
-        <!-- <Logger name="UserType2Logger" level="info" additivity="false">
-            <AppenderRef ref="UserType2File"/>
+        <Logger name="UserType1Logger" level="" additivity="false">
+            <AppenderRef ref="UserType1File"/>
         </Logger>
-        <Logger name="UserType3Logger" level="info" additivity="false">
+        <!--<Logger name="UserType3Logger" level="info" additivity="false">
             <AppenderRef ref="UserType3File"/>
         </Logger>
         <Logger name="UserType4Logger" level="info" additivity="false">
